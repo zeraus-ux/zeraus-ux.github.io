@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV – José Manuel Suárez Marín</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0A2342;
+    --blue:   #00A8E8;
+    --white:  #FFFFFF;
+    --light:  #F5F7FA;
+    --text:   #2D3748;
+    --muted:  #718096;
+    --border: #E2E8F0;
+    --accent2:#0077B6;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 16px;
+  }
+
+  .page {
+    width: 900px;
+    background: var(--white);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 1100px;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: var(--navy);
+    color: var(--white);
+    padding: 40px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue);
+  }
+
+  /* circuit decorativo */
+  .sidebar::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(0,168,232,0.12);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .avatar-ring {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto;
+    background: rgba(0,168,232,0.08);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 1px;
+  }
+
+  .s-section-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    border-bottom: 1px solid rgba(0,168,232,0.3);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.5;
+  }
+
+  .contact-item .icon {
+    color: var(--blue);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .contact-item a { color: var(--blue); text-decoration: none; }
+
+  .skill-block { margin-bottom: 8px; }
+  .skill-name {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .skill-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), #0077B6);
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: rgba(0,168,232,0.15);
+    border: 1px solid rgba(0,168,232,0.3);
+    color: rgba(255,255,255,0.85);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .header {
+    background: var(--navy);
+    padding: 40px 40px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue) 0%, rgba(0,168,232,0) 100%);
+  }
+
+  /* animated voltage line */
+  .voltage-line {
+    position: absolute;
+    bottom: 3px; left: 0;
+    height: 1px;
+    width: 60%;
+    background: linear-gradient(90deg, transparent 0%, var(--blue) 50%, transparent 100%);
+    animation: voltage 3s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes voltage {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  .name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .title-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .summary-box {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    max-width: 500px;
+  }
+
+  /* Content area */
+  .content {
+    padding: 32px 40px;
+    flex: 1;
+  }
+
+  .section { margin-bottom: 30px; }
+
+  .section-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Timeline */
+  .timeline { display: flex; flex-direction: column; gap: 22px; }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 10px 1fr;
+    gap: 0 16px;
+  }
+
+  .tl-dot-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
+  }
+
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .tl-line {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    margin-top: 4px;
+  }
+
+  .tl-content { padding-bottom: 4px; }
+
+  .tl-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 2px;
+  }
+
+  .tl-role {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .tl-date {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 1px;
+    background: rgba(0,168,232,0.08);
+    border: 1px solid rgba(0,168,232,0.2);
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .tl-company {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .tl-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .tl-bullets li {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .tl-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 10px;
+    top: 3px;
+  }
+
+  /* Education & certs row */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .edu-card {
+    background: var(--light);
+    border-left: 3px solid var(--blue);
+    padding: 14px 16px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .edu-degree {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .edu-institution { font-size: 13px; color: var(--muted); }
+  .edu-year { font-size: 12px; color: var(--blue); font-weight: 600; margin-top: 4px; }
+
+  /* KPI highlight */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .kpi-card {
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .kpi-number {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .page { box-shadow: none; }
+    .voltage-line { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="avatar-ring">JM</div>
+
+    <!-- Contacto -->
+    <div>
+      <div class="s-section-label">Contacto</div>
+      <div class="contact-item">
+        <span class="icon">📞</span>
+        <span>+54 11 7058 1190</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✉</span>
+        <span>josesuarez660@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span>Av. General Las Heras 2995<br>CP 1425 – CABA, Argentina</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">🔗</span>
+        <a href="https://www.linkedin.com/in/josémanuelsuárezmarín" target="_blank">linkedin.com/in/jmsuarezmarín</a>
+      </div>
+    </div>
+
+    <!-- Competencias técnicas -->
+    <div>
+      <div class="s-section-label">Competencias Técnicas</div>
+      <div class="skill-block">
+        <div class="skill-name"><span>Redes de Distribución</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:97%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name"><span>Subestaciones ≤ 69 kV</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name"><span>Diseño y cálculo eléctrico</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name"><span>Presupuestación de Obras</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name"><span>Conocimiento de la normativa nacional (AEA 90364, IRAM)</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-name"><span>Estándares internacionales (IEC/IEEE)</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:72%"></div></div>
+      </div>
+    </div>
+
+    <!-- Herramientas -->
+    <div>
+      <div class="s-section-label">Herramientas</div>
+      <div class="tag-list">
+        <span class="tag">SQL Server</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Python</span>
+        <span class="tag">AutoCAD</span>
+        <span class="tag">CYMDIST</span>
+        <span class="tag">MS Project</span>
+        <span class="tag">SCADA</span>
+        <span class="tag">Office 365</span>
+      </div>
+    </div>
+
+    <!-- Soft skills -->
+    <div>
+      <div class="s-section-label">Competencias</div>
+      <div class="tag-list">
+        <span class="tag">Comunicación técnica</span>
+        <span class="tag">Trabajo en equipo</span>
+        <span class="tag">Comunicación efectiva</span>
+        <span class="tag">Resolución de problemas</span>
+        <span class="tag">Gestión de proyectos</span>
+      </div>
+    </div>
+
+    <!-- Idiomas -->
+    <div>
+      <div class="s-section-label">Idiomas</div>
+      <div class="skill-block">
+        <div class="skill-name"><span>Español</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="name">José Manuel<br>Suárez Marín</div>
+      <div class="title-tag">Ingeniero Electricista · 32 años de experiencia</div>
+      <div class="summary-box" style="text-align: justify;">
+        Práctica prolongada en el Desarrollo de redes y subestaciones de distribución de energía 
+        eléctrica, diseño, construcción y mantenimiento. Extensos conocimientos en especificaciones 
+        técnicas, ingeniería conceptual, básica y de diseño, e inspección de obras de líneas y  
+        subestaciones de distribución de energía eléctrica. Destacada habilidad en costos, análisis  
+        de precios unitarios para construcción y mantenimiento de obras de redes de distribución aéreas.
+        Egresado Universidad de Oriente, Venezuela (1993).
+      </div>
+      <div class="header-line"></div>
+      <div class="voltage-line"></div>
+    </div>
+
+    <div class="content">
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-number">32</div>
+          <div class="kpi-label">Años de experiencia</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">3500</div>
+          <div class="kpi-label">km de líneas distribución aéreas a 13.8 kV y 34.5 kV</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">7</div>
+          <div class="kpi-label">Subestaciones rurales 34.5/13.8 kV de 1X10 MVA y 2X10 MVA. 
+        </div>
+        </div>
+      </div>
+
+      <!-- Experiencia -->
+      <div class="section">
+        <div class="section-label">Experiencia Profesional</div>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-header">
+                <div class="tl-role">Proyectos de Distribución</div>
+                <span class="tl-date">2015 – Presente</span>
+              </div>
+              <div class="tl-company">Proyectos de Distribucició de Energía Eléctrica</div>
+              <ul class="tl-bullets">
+                <li>Planificación y obras en tensiones menores a 69 kV, desde ingeniería conceptual hasta puesta en servicio.</li>
+                <li>Dimensionamiento de conductores, protecciones y tableros.</li>
+                <li>Cálculos eletromecánicos en líneas de distribución aéreas.</li>
+                <li>Desarrollo de dashboards con SQL Server y Power BI para KPIs de calidad de servicio técnico en tiempo real (2022).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-header">
+                <div class="tl-role">Ingeniero de Diseño y Construcción</div>
+                <span class="tl-date">2005 – 2015</span>
+              </div>
+              <div class="tl-company">Redes de Distribución Eléctrica</div>
+              <ul class="tl-bullets">
+                <li>Elaboración de especificaciones técnicas e ingeniería básica y de detalle para líneas y subestaciones de distribución.</li>
+                <li>Cálculo de conductores, protecciones, tableros, pararrayos y puesta a tierra.</li>
+                <li>Análisis de precios unitarios y presupuestación de obras de construcción y mantenimiento.</li>
+                <li>Inspección de obras de líneas aéreas y subestaciones en tensiones de 13,8 kV, 34,5 kV y 69 kV.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-header">
+                <div class="tl-role">Ingeniero de Redes de Distribución</div>
+                <span class="tl-date">1993 – 2005</span>
+              </div>
+              <div class="tl-company">Sector Eléctrico – Venezuela</div>
+              <ul class="tl-bullets">
+                <li>Diseño y supervisión de proyectos de redes de distribución aéreas y subestaciones rurales.</li>
+                <li>Desarrollo de ingeniería conceptual y básica para expansión de redes.</li>
+                <li>Mantenimiento preventivo y correctivo de infraestructura de distribución.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Educación -->
+      <div class="section">
+        <div class="section-label">Formación Académica</div>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-degree">Ingeniero Electricista</div>
+            <div class="edu-institution">Universidad de Oriente (UDO)<br>Venezuela</div>
+            <div class="edu-year">Egresado 1993</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">Dashboard & BI Analytics</div>
+            <div class="edu-institution">Microsoft SQL Server Management Studio<br>Microsoft Power BI</div>
+            <div class="edu-year">Formación continua – 2022</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logros destacados -->
+      <div class="section">
+        <div class="section-label">Logros Destacados</div>
+        <ul class="tl-bullets" style="gap:8px">
+          <li>Implementación de sistema de indicadores KPI en tiempo real (SAIDI, SAIFI, calidad de producto técnico) mediante Power BI + SQL Server, reduciendo el tiempo de reporte de horas a minutos.</li>
+          <li>Coordinación exitosa de 3 500 km de líneas de distribución aéreas en entornos rurales de alta complejidad logística.</li>
+          <li>Puesta en servicio de 7 subestaciones rurales de distribución 34,5/13,8 kV con transformadores de hasta 2×10 MVA.</li>
+          <li>Aplicación de técnicas de IA en análisis de datos eléctricos para predicción y mejora de indicadores de calidad de servicio.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>
